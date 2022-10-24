@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signup } from "../firebase"
 import { Alert } from "./alert"
+import { useAuth } from '../context/AuthContext.js'
+
+
 export function Register() {
+  const { user } = useAuth()
 
-
-  const [user, setUser] = useState({
+  const [userRegister, setUser] = useState({
     email: "",
     password: "",
   });
@@ -15,8 +18,13 @@ export function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(user.email, user.password, navigate)
+    signup(userRegister.email, userRegister.password, navigate)
   };
+
+
+  useEffect(() => {
+    if(user) {navigate("/")}
+  })
   return (
     <div className="bg-secondary vh-100 d-flex flex-column justify-content-center align-items-center">
       <div className="w-full max-w-3xl m-auto">
@@ -30,7 +38,7 @@ export function Register() {
             <input type="email"
               name="email"
               id="email"
-              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              onChange={(e) => setUser({ ...userRegister, email: e.target.value })}
               class="form-control"
               placeholder="tucorreo@company.com" />
           </div> <br />
@@ -39,7 +47,7 @@ export function Register() {
             <input type="password"
               name="password"
               id="password"
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
+              onChange={(e) => setUser({ ...userRegister, password: e.target.value })}
               class="form-control"
               placeholder="Ingrese su contraseña" />
           </div> <br />

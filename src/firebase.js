@@ -36,7 +36,7 @@ const auth = getAuth()
 const providerGoogle = new GoogleAuthProvider();
 
 
-function onAuth(setUser) {
+function onAuth(setUser,navigate) {
   return onAuthStateChanged(auth, (user) => {
         if (user) {
               setUser(user)
@@ -79,8 +79,11 @@ function loginWithGoogle (navigate) {
 const resetPassword = async (email) => sendPasswordResetEmail(auth, email);
 
 
-function logout () {
+function logout (navigate, setUser) {
   auth.signOut().then(function () {
+    setUser(null)
+    navigate("/Login")
+      
         // Sign-out successful.
   }).catch(function (error) {
         // An error happened.

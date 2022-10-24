@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Alert } from "./alert"
 import { login, signup, logout, loginWithGoogle, resetPassword } from "../firebase"
+import { useAuth } from '../context/AuthContext.js'
 
 
 export function Login() {
-  const [user, setUser] = useState({
+  const { user } = useAuth()
+
+  const [userLogin, setUser] = useState({
     email: "",
     password: "",
   });
@@ -15,11 +18,11 @@ export function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(user.email, user.password, navigate);
+    login(userLogin.email, userLogin.password, navigate);
   };
 
   const handleChange = ({ target: { value, name } }) =>
-    setUser({ ...user, [name]: value });
+    setUser({ ...userLogin, [name]: value });
 
   const handleGoogleSignin = () => {
     loginWithGoogle(navigate);
@@ -27,14 +30,20 @@ export function Login() {
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
-    if (!user.email) return setError("Write an email to reset password");
+    if (!userLogin.email) return setError("Write an email to reset password");
     try {
-      await resetPassword(user.email);
+      await resetPassword(userLogin.email);
       setError('CRIS te ha enviado un mensaje, por favor revise su correo seleccionado ')
     } catch (error) {
       setError(error.message);
     }
   };
+
+
+
+  useEffect(() => {
+    if(user) {navigate("/")}
+  })
 
   return (
 

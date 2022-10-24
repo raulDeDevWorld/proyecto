@@ -12,7 +12,7 @@ import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
-import {PrivateRoute} from "./components/PrivateRoute";
+import { PrivateRoute } from "./components/PrivateRoute";
 import { useAuth } from './context/AuthContext.js'
 
 
@@ -25,15 +25,22 @@ function App() {
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
-          <Route path="/Cotizar" element={<Cotizar />} />
-          <Route path="/Datos" element={<Datos />} />
-          <Route path="/Solicitud" element={<Solicitud />} />
-          <Route element={<PrivateRoute isAllowed={user} />}>
-          <Route index element={<Dashboard />} />
-          </Route>
-
           <Route path="Login" element={<Login />} />
           <Route path="Register" element={<Register />} />
+          <Route element={<PrivateRoute isAllowed={user} redirectTo = "/Login"/>}>
+            <Route index element={<Dashboard />} />
+          </Route>
+          <Route element={<PrivateRoute isAllowed={user} redirectTo = "/Solicitud"/>}>
+            <Route path="/Solicitud" element={<Solicitud />} />
+          </Route>
+          <Route element={<PrivateRoute isAllowed={user} redirectTo = "/Datos"/>}>
+            <Route path="/Datos" element={<Datos />} />
+          </Route>
+          <Route element={<PrivateRoute isAllowed={user} redirectTo = "/Cotizar"/>}>
+            <Route path="/Cotizar" element={<Cotizar />} />
+          </Route>
+
+
 
           <Route path="/">
             <Route path="users">

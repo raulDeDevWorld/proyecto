@@ -15,9 +15,21 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../../firebase"
+import { useAuth } from '../../context/AuthContext.js'
+
 
 const Sidebar = () => {
+  const { setUser } = useAuth()
   const { dispatch } = useContext(DarkModeContext);
+  const navigate = useNavigate();
+
+  const handlelogout = (e) => {
+    e.preventDefault();
+    logout(navigate, setUser);
+  };
+
   return (
     <div className="sidebar">
       <div className="top">
@@ -71,7 +83,7 @@ const Sidebar = () => {
           </li>
           <li>
             <ExitToAppIcon className="icon" />
-            <span>Salir</span>
+            <span onClick={handlelogout}>Salir</span>
           </li>
         </ul>
       </div>

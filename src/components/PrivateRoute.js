@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 export const PrivateRoute = ({
   isAllowed,
-  redirectTo = "/Login",
+  redirectTo,
   children,
 }) => {
   if (!isAllowed) {
