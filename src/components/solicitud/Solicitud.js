@@ -1,4 +1,4 @@
-import "./style/Cotizar.css";
+import "./style/Solicitud.css";
 import React from "react";
 import Sidebar from "../sidebar/Sidebar";
 import Navbar from "../navbar/Navbar";
@@ -29,9 +29,10 @@ export function Cotizar() {
                   <div className="card border-0">
                     <form className="m-2">
                       <div className="card card-body shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                        <div className="p-5 d-flex flex-column form-group">
-                          <label for="cars">Cantidad de solicitantes</label><br />
-                          <div className="">
+                        <div className="my-flex-solicitud p-5 form-group">
+                        <div>
+                           <label for="cars">Cantidad de solicitantes</label><br />
+                          <div className="d-flex">
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
                               <label class="form-check-label" for="inlineRadio1">1</label>
@@ -40,12 +41,16 @@ export function Cotizar() {
                               <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
                               <label class="form-check-label" for="inlineRadio2">2</label>
                             </div>
-                          </div><br />
+                          </div>
+                        </div>
+                        <div></div>
+                         <br />
                           <label>SOLICITANTE Nº1</label><br />
+                          <div></div>
                           <input
                             type="text"
                             name="dato2"
-                            className="border-secondary form-control mb-3 text-center"
+                            className="border-secondary form-control text-center"
                             placeholder="Nombres"
                           ></input>
                           <input
@@ -82,7 +87,7 @@ export function Cotizar() {
                             <option value="audi">opcion</option>
                           </select><br />
 
-                          <select className="border-secondary rounded-1 p-1" id="cars" name="cars">
+                          <select className=" border-secondary rounded-1 p-1" id="cars" name="cars">
                             <option value="volvo">Estado civil</option>
                             <option value="saab">opcion</option>
                             <option value="fiat">opcion</option>
@@ -90,9 +95,9 @@ export function Cotizar() {
                           </select><br />
                           <div className="">
                             <input type="radio" class="btn-check" name="options2" id="option4" autocomplete="off" />
-                            <label class="btn btn-secondary" for="option4"><small>Ingresos</small> <br /> Asalariado</label>
+                            <label class="btn btn-secondary" for="option4"><small>Ingresos</small> Asalariado</label>
                             <input type="radio" class="btn-check" name="options2" id="option5" autocomplete="off" />
-                            <label class="ml1 btn btn-secondary" for="option5"><small>Ingresos</small><br /> Independiente</label>
+                            <label class="ml1 btn btn-secondary" for="option5"><small>Ingresos</small> Independiente</label>
                           </div><br />
 
                           <input

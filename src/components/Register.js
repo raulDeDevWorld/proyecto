@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {signup} from "../firebase"
-import {Alert} from "./alert"
+import { signup } from "../firebase"
+import { Alert } from "./alert"
 export function Register() {
 
 
@@ -17,18 +17,12 @@ export function Register() {
     e.preventDefault();
     signup(user.email, user.password, navigate)
   };
-
   return (
     <div className="bg-secondary vh-100 d-flex flex-column justify-content-center align-items-center">
-           <div className="w-full max-w-3xl m-auto">
+      <div className="w-full max-w-3xl m-auto">
         <h1 className="text-center font-bold my-4 text-md flex justify-between px-3">Register</h1>
-      </div> 
-      
-      
+      </div>
       {error && <Alert message={error} />}
-
-
-
       <form onSubmit={handleSubmit} className="col-5 p-5  mb-5 rounded-1 bg-light">
         <fieldset disabled="">
           <div class="form-group">
@@ -53,14 +47,14 @@ export function Register() {
             <button type="submit" class="btn btn-primary w-50 mr-5">Sign In</button>
           </div> <br />
           <p className="text-center">
-        Already have an Account?
-        <Link to="/login" className="text-blue-700 hover:text-blue-900">
-          Login
-        </Link>
-      </p>
+            Already have an Account?
+            <Link to="/login" className="text-blue-700 hover:text-blue-900">
+              Login
+            </Link>
+          </p>
         </fieldset>
       </form>
-      
+
     </div>
   );
 }

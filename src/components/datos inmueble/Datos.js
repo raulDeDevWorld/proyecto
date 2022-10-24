@@ -23,7 +23,7 @@ export function Cotizar() {
                   <div className="card border-0">
                     <form className="m-2">
                       <div className="card card-body shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                        <div className="p-5 d-flex flex-column form-group">
+                        <div className="my-flex p-5 form-group">
                           <input
                             type="text"
                             name="dato2"
@@ -79,9 +79,7 @@ export function Cotizar() {
                             placeholder="Direccion especifica"
                           ></input><br />
 
-                        </div>
-                        <br />
-                       
+                        </div>                    
                         <button className="btn-Cotizador col-6 btn btn-primary rounded-5 mb-5">Continuar</button>
                       </div>
                     </form>
