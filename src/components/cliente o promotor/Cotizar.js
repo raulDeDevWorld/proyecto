@@ -2,7 +2,7 @@ import "./style/Cotizar.css";
 import React, { useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import { writeUserData } from "../../firebase";
+import { writeUserData, removeData } from "../../firebase";
 import "../../../src/pages/home/home.scss";
 export function Cotizar() {
   const [montoDePrestamo, setMontoDePrestamo] = useState(null)
@@ -52,9 +52,10 @@ export function Cotizar() {
 
   }
 
-
-  console.log(interesMensual)
-  console.log(cotaMensual)
+  const remove = (e) => {
+    e.preventDefault() 
+    removeData()
+  }
 
   return (
     <div className="home">
@@ -167,7 +168,10 @@ export function Cotizar() {
                   </div>
                   </div>}
                   <br />
-                        <button className="btn-Cotizador col-6 btn btn-primary rounded-5 mb-5" onClick={Guardar}>Guardar</button>
+                        <button className="btn-Cotizador col-6 btn btn-primary rounded-5 mb-5" onClick={Guardar}>Guardar</button> 
+                                         <br />
+                        <button className="btn-Cotizador col-6 btn btn-primary rounded-5 mb-5" onClick={remove}>Eliminar toda la base de datos</button>
+
                       </div>
                     </form>
                   </div>

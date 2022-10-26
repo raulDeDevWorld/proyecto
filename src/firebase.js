@@ -96,4 +96,11 @@ function writeUserData (object) {
   .catch(()=> console.log('repeat'))
 }
 
-export {onAuth, login, signup, logout, loginWithGoogle, resetPassword, writeUserData }
+function removeData () {
+  remove(ref(db, '/cotizaciones/'))
+  .then(()=>console.log('save'))
+  .catch(()=>console.log('repeat'));
+
+}
+
+export {onAuth, login, signup, logout, loginWithGoogle, resetPassword, writeUserData, removeData }
