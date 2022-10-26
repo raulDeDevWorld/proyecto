@@ -40,8 +40,8 @@ export function Cotizar() {
     const p = e.target.form[4].value // montoDePrestamo
     const n = e.target.form[6].value    // plazoEnMeses
     const tasaDeinteresAnual00 = e.target.form[5].value  //
-    const i = tasaDeinteresAnual00 / (360 * 12 / 365)
-    const cotaMes = p / ((1 - Math.pow((1 + i), -n)) / i)
+    const i = (tasaDeinteresAnual00/100) / (360 * 12 / 365)
+    const cotaMes = p / ((1 - Math.pow((1 + (i/100)), -n)) / i)
 
     setMontoDePrestamo(e.target.form[4].value)
     setPlazoEnMeses(e.target.form[6].value)
